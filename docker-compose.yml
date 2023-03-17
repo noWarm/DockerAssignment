@@ -28,8 +28,8 @@ services:
     container_name: users_service
     ports:
       - "80:80"
-    restart: always
-    depends_on:
+    restart: always # restart after a while in case of failure such as ECONNREFUSED
+    depends_on:     # start after db container is in service_healthy condition
       db:
         condition: service_healthy
     environment:
@@ -38,9 +38,9 @@ services:
 
   db:
     build: user_data
-    expose:
+    expose:         # expose this 3306 port to 
       - "3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
+      timeout: 5s
+      retries: 20

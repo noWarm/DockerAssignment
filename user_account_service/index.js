@@ -36,7 +36,9 @@ repository
     database: config.db.database,
     user: config.db.user,
     password: config.db.password,
-    port: config.db.port,
+    port: config.db.port, // make sure this port is the EXPOSED port of the db container 
+                          // (the one visible by other containers in the docker network 
+                          // and not the port for the host system)
   })
   .then((repo) => {
     console.log("Connected. Starting server...");
