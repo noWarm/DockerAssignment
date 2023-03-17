@@ -5,8 +5,8 @@ FROM node:17-alpine
 ADD . /app
 
 # Install dependencies
-RUN cd /app; \
-    npm install --production
+WORKDIR /app
+RUN npm install
 
 # Expose our server port.
 EXPOSE 80
@@ -14,4 +14,4 @@ EXPOSE 80
 # Run our app.
 CMD ["node", "/app/index.js"]
 
-WORKDIR /usr/app
+

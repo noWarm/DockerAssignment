@@ -4,7 +4,8 @@ var express = require('express');
 var morgan = require('morgan');
 
 module.exports.start = (options) => {
-
+  console.log("alohaa");
+  
   return new Promise((resolve, reject) => {
 
     //  Make sure we have a repository and port provided.
