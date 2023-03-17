@@ -38,8 +38,6 @@ services:
 
   db:
     build: user_data
-    ports:
-      - "6002:3306"
     expose:
       - "3306"
     healthcheck:
