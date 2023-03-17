@@ -28,7 +28,7 @@ services:
     container_name: users_service
     ports:
       - "80:80"
-    restart: always # restart after a while in case of failure such as ECONNREFUSED
+    # restart: always # actually, this is unnecessary, since depends_on confirms db healthiness
     depends_on:     # start after db container is in service_healthy condition
       db:
         condition: service_healthy
